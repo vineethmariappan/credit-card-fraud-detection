@@ -1,0 +1,157 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <title>Credit Card Fraud Detection</title>
+</head>
+<style>
+    td {
+        border: 1px black solid;
+        /* padding: 5px; */
+        cursor: pointer;
+    }
+
+    .selected {
+        background-color: blue;
+        color: #FFF;
+    }
+</style>
+<nav class="navbar sticky-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Credit Card Fraud Detection</a>
+</nav>
+<div class="container-fluid" style="text-align: center;">
+    <div class="row">
+        <div style="background-color:whitesmoke;padding:20px;">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem
+        </div>
+    </div>
+    <br>
+    <!-- <div class="row justify-content-center">
+        <div class="col-6">
+            <form id="review_form">
+                {% csrf_token %}
+                <input id="review" name="review" class="form-control" type="textarea"> <br>
+                <button class="btn btn-dark" type="submit">Submit</button>
+            </form>
+            <br>
+        
+        </div>
+    </div> -->
+    <h3>Select a credit card transaction</h3>
+    <br>
+    <form id="fm">
+        {% csrf_token %}
+        <table id="table" class="table table-bordered">
+            <!-- <tr>
+            <td>1 Ferrari F138</td>
+            <td>1 000€</td>
+            <td>1 200€</td>
+            <td>Model monopostu stajne Scuderia Ferrari pre sezónu 2013</td>
+            <td>1</td>
+            <td>F138</td>
+            <td>Klik pre detaily</td>
+        </tr> -->
+                <thead class="thead-dark">
+                <tr>
+                    <th style="display: none;">index</th>
+                    <th>Time</th>
+                    <th>V1</th>
+                    <th>V2</th>
+                    <th>V3</th>
+                    <th>V4</th>
+                    <th>V5</th>
+                    <th>V6</th>
+                    <th>V7</th>
+                    <th>V8</th>
+                    <th>V9</th>
+                    <th>V10</th>
+                    <th>V11</th>
+                    <th style="display: none;">V12</th>
+                    <th style="display: none;">V13</th>
+                    <th style="display: none;">V14</th>
+                    <th style="display: none;">V15</th>
+                    <th style="display: none;">V16</th>
+                    <th style="display: none;">V17</th>
+                    <th>V18</th>
+                    <th>V19</th>
+                    <th>V20</th>
+                    <th>V21</th>
+                    <th>V22</th>
+                    <th>V23</th>
+                    <th>V24</th>
+                    <th>V25</th>
+                    <th>V26</th>
+                    <th>V27</th>
+                    <th>V28</th>
+                    <th>Amount</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                {% for d in data %}
+                <tr>
+                    <td style="display: none;">{{d.index}}</td>
+                    <td>{{d.Time}}</td>
+                    <td>{{d.V1|stringformat:".2f"}}</td>
+                    <td>{{d.V2|stringformat:".2f"}}</td>
+                    <td>{{d.V3|stringformat:".2f"}}</td>
+                    <td>{{d.V4|stringformat:".2f"}}</td>
+                    <td>{{d.V5|stringformat:".2f"}}</td>
+                    <td>{{d.V6|stringformat:".2f"}}</td>
+                    <td>{{d.V7|stringformat:".2f"}}</td>
+                    <td>{{d.V8|stringformat:".2f"}}</td>
+                    <td>{{d.V9|stringformat:".2f"}}</td>
+                    <td>{{d.V10|stringformat:".2f"}}</td>
+                    <td>{{d.V11|stringformat:".2f"}}</td>
+                    <td style="display: none;">{{d.V12|stringformat:".2f"}}</td>
+                    <td style="display: none;">{{d.V13|stringformat:".2f"}}</td>
+                    <td style="display: none;">{{d.V14|stringformat:".2f"}}</td>
+                    <td style="display: none;">{{d.V15|stringformat:".2f"}}</td>
+                    <td style="display: none;">{{d.V16|stringformat:".2f"}}</td>
+                    <td style="display: none;">{{d.V17|stringformat:".2f"}}</td>
+                    <td>{{d.V18|stringformat:".2f"}}</td>
+                    <td>{{d.V19|stringformat:".2f"}}</td>
+                    <td>{{d.V20|stringformat:".2f"}}</td>
+                    <td>{{d.V21|stringformat:".2f"}}</td>
+                    <td>{{d.V22|stringformat:".2f"}}</td>
+                    <td>{{d.V23|stringformat:".2f"}}</td>
+                    <td>{{d.V24|stringformat:".2f"}}</td>
+                    <td>{{d.V25|stringformat:".2f"}}</td>
+                    <td>{{d.V26|stringformat:".2f"}}</td>
+                    <td>{{d.V27|stringformat:".2f"}}</td>
+                    <td>{{d.V28|stringformat:".2f"}}</td>
+                    <td>{{d.Amount}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+        <br>
+        <input class="ok btn btn-dark" id="predict" type="submit" name="OK" value="PREDICT" />
+    </form>
+    <br> <br>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div id="result" role="alert" style="display: none;"></div>
+            <div id="loading"></div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+</html>
