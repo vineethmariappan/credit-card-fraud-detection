@@ -10,7 +10,7 @@ from .mlmodel import credit_card_fraud_detection as cc
 def home(request):
     if request.method == 'POST':
         data = [[]]
-        for i in range(0,30):
+        for i in range(1,31):
             data[0].append(float(request.POST.get("transaction["+str(i)+"]")))
         print(data)
         result = cc.find(data)
@@ -18,6 +18,7 @@ def home(request):
     data = pd.read_csv('fraud_detection/mlmodel/creditcard.csv')
     data=data[data['Class']==1]
     data=data.head()
+    print(data)
     json_records = data.reset_index().to_json(orient ='records') 
     data = json.loads(json_records) 
     # print(data)

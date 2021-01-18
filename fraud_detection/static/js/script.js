@@ -1,7 +1,7 @@
 var json_obj=[];
 var json;
 $(document).on('submit', '#fm', (e) => {
-
+    $('#predict').attr('disabled', true);
     e.preventDefault();
     $("#result").removeClass();
     console.log(json);
@@ -21,9 +21,10 @@ $(document).on('submit', '#fm', (e) => {
         success: function (data) {
             // alert("success");
             var result = data.result[0];
+            console.log(result);
             $('#result')[0].style.display="block";
         //   alert($("#table tr.selected td:first").html());
-            if(result===1){
+            if(result==0){
                 $('#result').addClass('alert alert-success');
                 $('#result')[0].textContent="Genuine Transaction";
             }
@@ -31,6 +32,7 @@ $(document).on('submit', '#fm', (e) => {
                 $('#result').addClass('alert alert-danger');
                 $('#result')[0].textContent="Fraudulent Transaction!";
             }
+            $('#predict').attr('disabled', false);
             document.getElementById("loading").innerHTML='';
         }
     })
@@ -43,7 +45,7 @@ $("#table tr").click(function () {
     // var row = $(this).closest('td');
     json_obj=[];
     json="";
-    for(var i=0;i<30;i++){
+    for(var i=0;i<31;i++){
          json_obj.push($(this).find(`td:eq(${i})`).text());
     }
     json = Object.assign({}, json_obj);
